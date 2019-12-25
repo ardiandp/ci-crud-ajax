@@ -3,9 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Bpjs_model extends CI_Model {
 
-	var $table = 'bpjs';
-	var $column_order = array('nik','no_akun','nama',null);
-	var $column_search = array('nik','no_akun','nama');
+	var $table = 'bpjs_mandiri';
+	var $column_order = array('nik','no_akun','nama','no_va','hub_keluarga','terdaftar','aktif','parent',null);
+	var $column_search = array('nik','no_akun','nama','no_va','hub_keluarga','terdaftar','aktif','parent');
 	var $order = array('idbpjs' => 'desc');
 
 	public function __construct()

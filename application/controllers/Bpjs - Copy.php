@@ -23,11 +23,7 @@ class Bpjs extends CI_Controller {
 			$row = array();
 			$row[] = $bpjs->nik;
 			$row[] = $bpjs->no_akun;
-			$row[] = $bpjs->nama;			
-			$row[] = $bpjs->hub_keluarga;
-			$row[] = $bpjs->terdaftar;
-			$row[] = $bpjs->aktif;
-			
+			$row[] = $bpjs->nama;
 
 			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_bpjs('."'".$bpjs->idbpjs."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
 				  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_bpjs('."'".$bpjs->idbpjs."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
@@ -56,11 +52,6 @@ class Bpjs extends CI_Controller {
 			'nik'=>$this->input->post('nik'),
 			'no_akun'=>$this->input->post('no_akun'),
 			'nama'=>$this->input->post('nama'),
-			'no_va'=>$this->input->post('no_va'),
-			'hub_keluarga'=>$this->input->post('hub_keluarga'),
-			'terdaftar'=>$this->input->post('terdaftar'),
-			'aktif'=>$this->input->post('aktif'),
-			'parent'=>$this->input->post('parent'),
 		);
 		$insert = $this->bpjs->save($data);
 		echo json_encode(array("status"=>TRUE));
@@ -73,11 +64,6 @@ class Bpjs extends CI_Controller {
 			'nik'=>$this->input->post('nik'),
 			'no_akun'=>$this->input->post('no_akun'),
 			'nama'=>$this->input->post('nama'),
-			'no_va'=>$this->input->post('no_va'),
-			'hub_keluarga'=>$this->input->post('hub_keluarga'),
-			'terdaftar'=>$this->input->post('terdaftar'),
-			'aktif'=>$this->input->post('aktif'),
-			'parent'=>$this->input->post('parent'),
 		);
 		$this->bpjs->update(array('idbpjs'=>$this->input->post('idbpjs')),$data);
 		echo json_encode(array("status"=>TRUE));

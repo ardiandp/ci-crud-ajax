@@ -30,7 +30,10 @@
                 <tr>
                     <th>NIK</th>
                     <th>No Akun</th>
-                    <th>Nama</th>                    
+                    <th>Nama</th>
+                    <th>Hub Keluarga</th>
+                    <th>terdaftar</th>
+                    <th>Aktif</th>                    
                     <th style="width:125px;">Action</th>
                 </tr>
             </thead>
@@ -39,9 +42,12 @@
 
             <tfoot>
             <tr>
-              <th>NIK</th>
+                    <th>NIK</th>
                     <th>No Akun</th>
-                    <th>Nama</th>                    
+                    <th>Nama</th>
+                    <th>Hub Keluarga</th>
+                    <th>terdaftar</th>
+                    <th>Aktif</th>                    
                     <th style="width:125px;">Action</th>
             </tfoot>
         </table>
@@ -123,6 +129,11 @@
                 $('[name="nik"]').val(data.nik);
                 $('[name="no_akun"]').val(data.no_akun);
                 $('[name="nama"]').val(data.nama);
+                $('[name="no_va"]').val(data.no_va);
+                $('[name="hub_keluarga"]').val(data.hub_keluarga);
+                $('[name="terdaftar"]').val(data.terdaftar);
+                $('[name="aktif"]').val(data.aktif);
+                $('[name="parent"]').val(data.parent);
                 $('#modal_form').modal('show');
                 ('.modal-title').text('edit BPJS');
             },
@@ -235,6 +246,41 @@
                             <label class="control-label col-md-3">Nama</label>
                             <div class="col-md-9">
                                 <input name="nama" placeholder="Nama" class="form-control" type="text">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label class="control-label col-md-3">Nomor VA</label>
+                            <div class="col-md-9">
+                                <input name="no_va" placeholder="Nomor Virtual Akun" class="form-control" type="text">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label class="control-label col-md-3">Hubungan Keluarga</label>
+                            <div class="col-md-9">
+                                <input name="hub_keluarga" placeholder="Hubungan Keluarga" class="form-control" type="text">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label class="control-label col-md-3">Terdaftar</label>
+                            <div class="col-md-9">
+                                <input name="terdaftar" placeholder="Terdaftar" class="form-control" type="text">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label class="control-label col-md-3">Aktif</label>
+                            <div class="col-md-9">
+                                <input name="aktif" placeholder="Aktif" class="form-control" type="text">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label class="control-label col-md-3">Parent</label>
+                            <div class="col-md-9">
+                                <input name="parent" placeholder="Parent" class="form-control" type="text">
                                 <span class="help-block"></span>
                             </div>
                         </div>

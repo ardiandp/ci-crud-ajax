@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ajax BPJSs</title>
+    <title>Ajax CRUD BPJS</title>
     <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/datatables/css/dataTables.bootstrap.css')?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')?>" rel="stylesheet">
@@ -16,31 +16,37 @@
     <![endif]-->
     </head> 
 <body>
-
     <div class="container">
-        <h1 style="font-size:20pt">Ajax BPJS</h1>
+        <h1 style="font-size:20pt">BPJS</h1>
 
-        <h3> Data BPJS</h3>
-        <br>
-        <button class="btn btn-success" onclick="add_bpjs()"><i class="glyphicon glyphicon-plus"></i>Add BPJS</button>
-        <button class="btn btn-default" onclick="reload_table()"><i class="glyphicon glyphicon-refres"></i>Reload</button>
-        <br/>
+        <h3>BPJS Data</h3>
+        <br />
+        <button class="btn btn-success" onclick="add_bpjs()"><i class="glyphicon glyphicon-plus"></i> Add BPJS</button>
+        <button class="btn btn-default" onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i> Reload</button>
+        <br />
+        <br />
         <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>NIK</th>
                     <th>No Akun</th>
-                    <th>Nama</th>
-                    <th>Aksi</th>
+                    <th>Nama</th>                    
+                    <th style="width:125px;">Action</th>
                 </tr>
             </thead>
             <tbody>
+            </tbody>
 
-            </tbody>            
+            <tfoot>
+            <tr>
+              <th>NIK</th>
+                    <th>No Akun</th>
+                    <th>Nama</th>                    
+                    <th style="width:125px;">Action</th>
+            </tfoot>
         </table>
     </div>
-
-    <script src="<?php echo base_url('assets/jquery/jquery-2.1.4.min.js')?>"></script>
+<script src="<?php echo base_url('assets/jquery/jquery-2.1.4.min.js')?>"></script>
 <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.js')?>"></script>
@@ -69,25 +75,26 @@
                 "targets": [ -1 ],
                 "orderable": false,
 
-            },],
+            },
+            ],
         });
 
         $("input").change(function(){
             $(this).parent().parent().removeClass('has-error');
             $(this).next().empty();
         });
-       $("textarea").change(function(){
-        $(this).parent().parent().removeClass('has-error');
-        $(this).next().empty();
+        $("textarea").change(function(){
+             $(this).parent().parent().removeClass('has-error');
+             $(this).next().empty();
          });
-       $("select").change(function(){
-        $(this).parent().parent().removeClass('has-error');
-        $(this).next().empty();
+        $("select").change(function(){
+             $(this).parent().parent().removeClass('has-error');
+             $(this).next().empty();
         });
       });
 
 
-    function add_person()
+    function add_bpjs()
     {
         save_method = 'add';
         $('#form')[0].reset();
@@ -95,7 +102,7 @@
         $('.help-block').empty();
         $('#modal_form').modal('show');
         $('.modal-title').text('Add BPJS');
-    },
+    }
 
 
     function edit_bpjs(idbpjs)
@@ -107,14 +114,17 @@
 
         //ajax load form
         $.ajax({
-            url: "<?php echo site_url('bpjs/ajax_edit/')?>/"+id,
+            url: "<?php echo site_url('bpjs/ajax_edit/')?>/"+idbpjs,
             type: "GET",
             dataType: "JSON",
             success: function(data)
             {
                 $('[name="idbpjs"]').val(data.idbpjs);
+                $('[name="nik"]').val(data.nik);
                 $('[name="no_akun"]').val(data.no_akun);
                 $('[name="nama"]').val(data.nama);
+                $('#modal_form').modal('show');
+                ('.modal-title').text('edit BPJS');
             },
             error: function (jqXHR,textStatus, errorThrown)
             {
@@ -136,7 +146,7 @@
         var url;
 
         if(save_method == 'add'){
-            url = "<?php echo site_url('bpjs/ajax_Add')?>";
+            url = "<?php echo site_url('bpjs/ajax_add')?>";
         } else{
             url = "<?php echo site_url('bpjs/ajax_update')?>";
         }
@@ -178,7 +188,7 @@
         if(confirm('apakah yakin mau di hapus'))
         {
             $.ajax({
-                url: "<?php echo site_url('bpjs/ajax_delete')?>/"+id,
+                url: "<?php echo site_url('bpjs/ajax_delete')?>/"+idbpjs,
                 type: "POST",
                 dataType: "JSON",
                 success: function(data)
